@@ -10,6 +10,8 @@
 		7F0718083B187FC4805B4B50 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F089B344D033C3E49D627AA2 /* Pods.framework */; };
 		DF28EAB31C0D821B00D8EC9F /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB21C0D821B00D8EC9F /* utils.m */; };
 		DF28EAB51C0D89B000D8EC9F /* marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB41C0D89B000D8EC9F /* marco.swift */; };
+		DF946C141C10365C00FAFE93 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C111C10365C00FAFE93 /* DataViewController.m */; };
+		DF946C151C10365C00FAFE93 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C131C10365C00FAFE93 /* RootViewController.m */; };
 		DFA9688B1C0CAEBA008129FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9688A1C0CAEBA008129FF /* AppDelegate.swift */; };
 		DFA9688D1C0CAEBA008129FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9688C1C0CAEBA008129FF /* ViewController.swift */; };
 		DFA968901C0CAEBA008129FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA9688E1C0CAEBA008129FF /* Main.storyboard */; };
@@ -109,6 +111,10 @@
 		DF28EAB11C0D821B00D8EC9F /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		DF28EAB21C0D821B00D8EC9F /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		DF28EAB41C0D89B000D8EC9F /* marco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = marco.swift; sourceTree = "<group>"; };
+		DF946C101C10365C00FAFE93 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		DF946C111C10365C00FAFE93 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		DF946C121C10365C00FAFE93 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		DF946C131C10365C00FAFE93 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		DFA968871C0CAEBA008129FF /* swiftReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA9688A1C0CAEBA008129FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFA9688C1C0CAEBA008129FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -494,6 +500,10 @@
 		DFA969011C0CB45A008129FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF946C101C10365C00FAFE93 /* DataViewController.h */,
+				DF946C111C10365C00FAFE93 /* DataViewController.m */,
+				DF946C121C10365C00FAFE93 /* RootViewController.h */,
+				DF946C131C10365C00FAFE93 /* RootViewController.m */,
 				DFA9688C1C0CAEBA008129FF /* ViewController.swift */,
 				DFA9690E1C0CBBF2008129FF /* searchViewController.swift */,
 				DFA969101C0CBCB6008129FF /* chapterViewController.swift */,
@@ -978,6 +988,7 @@
 				DFA9699D1C0CBCFA008129FF /* E_SearchViewController.m in Sources */,
 				DFA969791C0CBCFA008129FF /* NSDate+NSDate_E_Date.m in Sources */,
 				DFA968F41C0CB322008129FF /* ProVC.m in Sources */,
+				DF946C141C10365C00FAFE93 /* DataViewController.m in Sources */,
 				DFA9690C1C0CB68F008129FF /* novel.m in Sources */,
 				DFA968ED1C0CB322008129FF /* CoreLaunchPro.m in Sources */,
 				DFA969951C0CBCFA008129FF /* E_ReaderView.m in Sources */,
@@ -986,6 +997,7 @@
 				DFA9699E1C0CBCFA008129FF /* E_WebViewControler.m in Sources */,
 				DFA969931C0CBCFA008129FF /* E_MagnifiterView.m in Sources */,
 				DFA9699A1C0CBCFA008129FF /* E_CommentViewController.m in Sources */,
+				DF946C151C10365C00FAFE93 /* RootViewController.m in Sources */,
 				DFA968EC1C0CB322008129FF /* CoreLaunchPlus.m in Sources */,
 				DFA9698B1C0CBCFA008129FF /* UIView+Extension.m in Sources */,
 				DFA969761C0CBCFA008129FF /* E_Mark.m in Sources */,

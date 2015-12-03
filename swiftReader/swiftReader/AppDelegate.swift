@@ -21,10 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let searchVC = searchViewController.sharedInstance
         searchVC.title = "搜索"
 
+        let dvc = RootViewController()
+        dvc.title = "读书"
+
 
         let tab = UITabBarController()
         tab.addChildViewController(vc)
         tab.addChildViewController(searchVC)
+        tab.addChildViewController(dvc)
 
         let nav = UINavigationController(rootViewController: tab)
 
