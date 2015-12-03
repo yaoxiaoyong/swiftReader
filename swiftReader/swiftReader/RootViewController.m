@@ -34,7 +34,7 @@
     [super viewDidLoad];
 
     [self.navigationController setNavigationBarHidden:YES];
-    self.tabBarController.hidesBottomBarWhenPushed = TRUE;
+    self.navigationController.hidesBottomBarWhenPushed = YES;
 
     novelName = @"武道天心";
     fileIndex = 0;
@@ -44,13 +44,22 @@
     [_dataArray addObject:@"2"];
 
     //novelChapterArray = [NSArray arrayWithArray:[chapter findByCriteria:[NSString stringWithFormat:@" WHERE novelName='%@'", novelName]]];
-    novelChapterArray = [NSArray arrayWithArray:[chapter findAll]];
+    NSArray *array = [NSArray arrayWithArray:[chapter findAll]];
+
+
+    novelChapterArray = [array sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
+        NSComparisonResult result = [((chapter*)obj1).chapterName compare:((chapter*)obj2).chapterName];
+        return result == NSOrderedDescending; // 升序
+    }];
+
+
+
     DDLog(@"count=%d", novelChapterArray.count);
 
     [self createData];
 
-    layoutManager = [[NSLayoutManager alloc]init];
-    [storage addLayoutManager:layoutManager];
+
+
 
 
     [self createUI];
@@ -61,8 +70,13 @@
 
 -(void)createData
 {
+    NSLog(@"fileIndex=%d", fileIndex);
     chapter *p1 = novelChapterArray[fileIndex++];
-    storage = [[NSTextStorage alloc]initWithString:p1.chapterContent];
+    textString = p1.chapterContent;
+    NSLog(@"textString=%@", textString);
+    storage = [[NSTextStorage alloc]initWithString:textString];
+    layoutManager = [[NSLayoutManager alloc]init];
+    [storage addLayoutManager:layoutManager];
 }
 
 -(void)createUI
@@ -80,25 +94,18 @@
 // 根据返回dataSource数组中对应的viewController
 -(DataViewController *)dataViewControllerAtIndex:(NSUInteger)index withLayout:(NSLayoutManager *)layoutManager
 {
-    NSLog(@"crete a new textView");
-
     textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [layoutManager addTextContainer:textContainer];
-
-    // 排版结束的判断
     NSRange range = [layoutManager glyphRangeForTextContainer:textContainer];  // 此方法用来获取当前TextContainer内的文本Range
     if ( range.length + range.location == textString.length ){
         NSLog(@"out of range");
         //fileIndex = 3;
         [self createData];
-        NSLog(@"out of range111, count=%d", layoutManager.textContainers.count);
+        //NSLog(@"out of range111, count=%d", layoutManager.textContainers.count);
         [layoutManager removeTextContainerAtIndex:layoutManager.textContainers.count -1];
         textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
-        NSLog(@"out of range222");
         [layoutManager addTextContainer:textContainer];
     }
-
-    NSLog(@"333");
 
     DataViewController *dvc = [[DataViewController alloc]init];
     [dvc setContainer:textContainer];
@@ -118,7 +125,7 @@
 #pragma mark - PageViewController Datasource
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    NSLog(@"go before");
+    //NSLog(@"go before");
     _isRequestPrePage = YES;
     NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
     // index为0表示已经翻到最前页
@@ -134,7 +141,7 @@
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    NSLog(@"go after");
+    //NSLog(@"go after");
     _isRequestPrePage = NO;
     NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
     // index为数组最末表示已经翻至最后页
