@@ -36,7 +36,8 @@
 
 +(TFHpple*)THppleParseWithURL:(NSString*)url{
     NSError *err = nil;
-    NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:url]
+    //NSLog(@"url:%@", url);
+    NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:CHINESE_CODING]]
                                                     encoding:CHINESE_CODING
                                                        error:&err];
     //NSLog(@"htmlString:%@", htmlString);

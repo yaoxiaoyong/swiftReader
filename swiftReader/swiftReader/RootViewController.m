@@ -24,21 +24,35 @@
     NSLayoutManager *layoutManager;
     NSTextContainer *textContainer;
     NSString *textString;
-    NSInteger *fileIndex;
+    int fileIndex;
+
+    NSString *novelName;
+    NSArray * novelChapterArray;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    fileIndex = 1;
+    [self.navigationController setNavigationBarHidden:YES];
+    self.tabBarController.hidesBottomBarWhenPushed = TRUE;
+
+    novelName = @"武道天心";
+    fileIndex = 0;
 
     _dataArray = [[NSMutableArray alloc]init];
     [_dataArray addObject:@"1"];
     [_dataArray addObject:@"2"];
 
-
+    //novelChapterArray = [NSArray arrayWithArray:[chapter findByCriteria:[NSString stringWithFormat:@" WHERE novelName='%@'", novelName]]];
+    novelChapterArray = [NSArray arrayWithArray:[chapter findAll]];
+    DDLog(@"count=%d", novelChapterArray.count);
 
     [self createData];
+
+    layoutManager = [[NSLayoutManager alloc]init];
+    [storage addLayoutManager:layoutManager];
+
+
     [self createUI];
 }
 
@@ -47,19 +61,8 @@
 
 -(void)createData
 {
-    NSString *filename = [NSString stringWithFormat:@"Chapter%d", fileIndex];
-    DDLog();
-    [self.navigationController setNavigationBarHidden:YES];
-    DDLog(@"filename=%@", filename);
-    textString = [[NSString alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:filename ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
-    DDLog();
-    // 2.将字符串封装到TextStorage中
-    storage = [[NSTextStorage alloc]initWithString:textString];
-    DDLog();
-    // 3.为TextStorag添加一个LayoutManager
-    layoutManager = [[NSLayoutManager alloc]init];
-    [storage addLayoutManager:layoutManager];
-    DDLog();
+    chapter *p1 = novelChapterArray[fileIndex++];
+    storage = [[NSTextStorage alloc]initWithString:p1.chapterContent];
 }
 
 -(void)createUI
@@ -77,15 +80,16 @@
 // 根据返回dataSource数组中对应的viewController
 -(DataViewController *)dataViewControllerAtIndex:(NSUInteger)index withLayout:(NSLayoutManager *)layoutManager
 {
-    NSLog(@"crete a new textView, fileIndex=%ld", fileIndex);
+    NSLog(@"crete a new textView");
 
     textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     [layoutManager addTextContainer:textContainer];
+
     // 排版结束的判断
     NSRange range = [layoutManager glyphRangeForTextContainer:textContainer];  // 此方法用来获取当前TextContainer内的文本Range
     if ( range.length + range.location == textString.length ){
         NSLog(@"out of range");
-        fileIndex = 3;
+        //fileIndex = 3;
         [self createData];
         NSLog(@"out of range111, count=%d", layoutManager.textContainers.count);
         [layoutManager removeTextContainerAtIndex:layoutManager.textContainers.count -1];
@@ -95,8 +99,6 @@
     }
 
     NSLog(@"333");
-
-
 
     DataViewController *dvc = [[DataViewController alloc]init];
     [dvc setContainer:textContainer];
