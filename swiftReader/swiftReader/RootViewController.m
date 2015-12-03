@@ -18,6 +18,8 @@
     NSMutableArray *_dataArray;
     UIPageViewController *_pageViewController;
     BOOL _isRequestPrePage;
+    NSTextStorage *storage;
+    NSLayoutManager *layoutManager;
 }
 
 - (void)viewDidLoad {
@@ -25,10 +27,20 @@
 
     [self.navigationController setNavigationBarHidden:YES];
 
+    NSString *textString = [[NSString alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Chapter7" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
 
+    // 2.将字符串封装到TextStorage中
+    storage = [[NSTextStorage alloc]initWithString:textString];
+
+    // 3.为TextStorag添加一个LayoutManager
+    layoutManager = [[NSLayoutManager alloc]init];
+    [storage addLayoutManager:layoutManager];
 
     [self createData];
     [self createUI];
+}
+
+-(void)setTextData:(NSString*)string{
 }
 
 -(void)createData
@@ -45,18 +57,21 @@
     _pageViewController  = [[UIPageViewController alloc]initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:options];
     _pageViewController.dataSource = self;
     _pageViewController.delegate = self;
-    DataViewController *dvc = [self dataViewControllerAtIndex:0];
+    DataViewController *dvc = [self dataViewControllerAtIndex:0 withLayout:layoutManager];
     [_pageViewController setViewControllers:@[dvc] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     [self addChildViewController:_pageViewController];
     [self.view addSubview:_pageViewController.view];
 }
 
 // 根据返回dataSource数组中对应的viewController
--(DataViewController *)dataViewControllerAtIndex:(NSUInteger)index
+-(DataViewController *)dataViewControllerAtIndex:(NSUInteger)index withLayout:(NSLayoutManager *)layoutManager
 {
+    NSLog(@"crete a new textView");
     DataViewController *dvc = [[DataViewController alloc]init];
+    [dvc setLayout:layoutManager];
     dvc.index = [_dataArray objectAtIndex:index];
-    dvc.backColor = [UIColor colorWithRed:arc4random_uniform(100) / 100.f green:arc4random_uniform(100) / 100.f blue:arc4random_uniform(100) / 100.f alpha:1.0f];
+    [dvc setDataSource:@"test"];
+    dvc.backColor = [UIColor lightGrayColor];
     return dvc;
 }
 
@@ -70,6 +85,7 @@
 #pragma mark - PageViewController Datasource
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
+    NSLog(@"go before");
     _isRequestPrePage = YES;
     NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
     // index为0表示已经翻到最前页
@@ -79,12 +95,13 @@
     // 返回数据前关闭交互，确保只允许翻一页（有BUG 已作废，改进在代理方法中）
 //    pageViewController.view.userInteractionEnabled = NO;
     index --;
-    return [self dataViewControllerAtIndex:index];
+    return [self dataViewControllerAtIndex:index withLayout:layoutManager];
 }
 
 
 -(UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+    NSLog(@"go after");
     _isRequestPrePage = NO;
     NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
     // index为数组最末表示已经翻至最后页
@@ -94,7 +111,7 @@
     // 返回数据前关闭交互，确保只允许翻一页（有BUG 已作废，改进在代理方法中）
 //    pageViewController.view.userInteractionEnabled = NO;
     index ++;
-    return [self dataViewControllerAtIndex:index];
+    return [self dataViewControllerAtIndex:index withLayout:layoutManager];
 }
 
 #pragma - mark PageViewController Delegate
@@ -125,19 +142,5 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

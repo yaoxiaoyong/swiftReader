@@ -9,10 +9,28 @@
 #import "DataViewController.h"
 
 @interface DataViewController ()
+@property (strong,nonatomic) NSString * dataString;
 
+@property (strong, nonatomic) NSLayoutManager *layoutManager;
 @end
 
+
+#define Width  self.view.frame.size.width-20
+#define Hight  self.view.frame.size.height-50
+
 @implementation DataViewController
+
+-(void)setLayout:(NSLayoutManager *)layoutManager{
+    _layoutManager = layoutManager;
+
+    NSTextContainer *textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(Width, Hight)];
+    [_layoutManager addTextContainer:textContainer];
+
+    UITextView *textView = [[UITextView alloc]initWithFrame:self.view.frame textContainer:textContainer];
+    textView.editable = NO;
+    textView.font = [UIFont fontWithName:@"AppleGothic" size:30];
+    [self.view addSubview:textView];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,15 +49,10 @@
     label.textColor = [UIColor whiteColor];
     label.text = [NSString stringWithFormat:@"第%@页",_index];
     [self.view addSubview:label];
-
-    UITextView *textview = [[UITextView alloc]initWithFrame:CGRectMake(10, 30, self.view.frame.size.width-20, self.view.frame.size.height-50)];
-
-    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setDataSource:(NSString*)dataString{
+    _dataString = dataString;
 }
 
 @end

@@ -13,4 +13,13 @@
 @property (nonatomic,strong) NSString *index;
 @property (nonatomic,strong) UIColor *backColor;
 
+
+
+
+
+
+-(void)setDataSource:(NSString*)dataString;
+
+-(void)setLayout:(NSLayoutManager *)layoutManager;
+
 @end

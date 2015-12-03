@@ -12,6 +12,13 @@
 		DF28EAB51C0D89B000D8EC9F /* marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB41C0D89B000D8EC9F /* marco.swift */; };
 		DF946C141C10365C00FAFE93 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C111C10365C00FAFE93 /* DataViewController.m */; };
 		DF946C151C10365C00FAFE93 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C131C10365C00FAFE93 /* RootViewController.m */; };
+		DF946C1D1C10433C00FAFE93 /* Chapter1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C161C10433C00FAFE93 /* Chapter1.txt */; };
+		DF946C1E1C10433C00FAFE93 /* Chapter2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C171C10433C00FAFE93 /* Chapter2.txt */; };
+		DF946C1F1C10433C00FAFE93 /* Chapter3.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C181C10433C00FAFE93 /* Chapter3.txt */; };
+		DF946C201C10433C00FAFE93 /* Chapter4.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C191C10433C00FAFE93 /* Chapter4.txt */; };
+		DF946C211C10433C00FAFE93 /* Chapter5.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C1A1C10433C00FAFE93 /* Chapter5.txt */; };
+		DF946C221C10433C00FAFE93 /* Chapter6.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C1B1C10433C00FAFE93 /* Chapter6.txt */; };
+		DF946C231C10433C00FAFE93 /* Chapter7.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C1C1C10433C00FAFE93 /* Chapter7.txt */; };
 		DFA9688B1C0CAEBA008129FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9688A1C0CAEBA008129FF /* AppDelegate.swift */; };
 		DFA9688D1C0CAEBA008129FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9688C1C0CAEBA008129FF /* ViewController.swift */; };
 		DFA968901C0CAEBA008129FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA9688E1C0CAEBA008129FF /* Main.storyboard */; };
@@ -115,6 +122,13 @@
 		DF946C111C10365C00FAFE93 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 		DF946C121C10365C00FAFE93 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DF946C131C10365C00FAFE93 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		DF946C161C10433C00FAFE93 /* Chapter1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter1.txt; sourceTree = "<group>"; };
+		DF946C171C10433C00FAFE93 /* Chapter2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter2.txt; sourceTree = "<group>"; };
+		DF946C181C10433C00FAFE93 /* Chapter3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter3.txt; sourceTree = "<group>"; };
+		DF946C191C10433C00FAFE93 /* Chapter4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter4.txt; sourceTree = "<group>"; };
+		DF946C1A1C10433C00FAFE93 /* Chapter5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter5.txt; sourceTree = "<group>"; };
+		DF946C1B1C10433C00FAFE93 /* Chapter6.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter6.txt; sourceTree = "<group>"; };
+		DF946C1C1C10433C00FAFE93 /* Chapter7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter7.txt; sourceTree = "<group>"; };
 		DFA968871C0CAEBA008129FF /* swiftReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA9688A1C0CAEBA008129FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFA9688C1C0CAEBA008129FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -481,6 +495,13 @@
 		DFA968FF1C0CB435008129FF /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				DF946C161C10433C00FAFE93 /* Chapter1.txt */,
+				DF946C171C10433C00FAFE93 /* Chapter2.txt */,
+				DF946C181C10433C00FAFE93 /* Chapter3.txt */,
+				DF946C191C10433C00FAFE93 /* Chapter4.txt */,
+				DF946C1A1C10433C00FAFE93 /* Chapter5.txt */,
+				DF946C1B1C10433C00FAFE93 /* Chapter6.txt */,
+				DF946C1C1C10433C00FAFE93 /* Chapter7.txt */,
 				DFA968961C0CAEBA008129FF /* Info.plist */,
 				DFA968B81C0CAFA8008129FF /* swiftReader-Bridging-Header.h */,
 			);
@@ -867,9 +888,16 @@
 			files = (
 				DFA968951C0CAEBA008129FF /* LaunchScreen.storyboard in Resources */,
 				DFA968921C0CAEBA008129FF /* Assets.xcassets in Resources */,
+				DF946C231C10433C00FAFE93 /* Chapter7.txt in Resources */,
+				DF946C201C10433C00FAFE93 /* Chapter4.txt in Resources */,
+				DF946C221C10433C00FAFE93 /* Chapter6.txt in Resources */,
+				DF946C1F1C10433C00FAFE93 /* Chapter3.txt in Resources */,
+				DF946C1D1C10433C00FAFE93 /* Chapter1.txt in Resources */,
 				DFA969801C0CBCFA008129FF /* Chapter7.txt in Resources */,
+				DF946C211C10433C00FAFE93 /* Chapter5.txt in Resources */,
 				DFA9697F1C0CBCFA008129FF /* Chapter6.txt in Resources */,
 				DFA9697C1C0CBCFA008129FF /* Chapter3.txt in Resources */,
+				DF946C1E1C10433C00FAFE93 /* Chapter2.txt in Resources */,
 				DFA9697B1C0CBCFA008129FF /* Chapter2.txt in Resources */,
 				DFA9697A1C0CBCFA008129FF /* Chapter1.txt in Resources */,
 				DFA969841C0CBCFA008129FF /* MJRefresh.bundle in Resources */,
