@@ -43,26 +43,18 @@
     [_dataArray addObject:@"1"];
     [_dataArray addObject:@"2"];
 
-    //novelChapterArray = [NSArray arrayWithArray:[chapter findByCriteria:[NSString stringWithFormat:@" WHERE novelName='%@'", novelName]]];
-    NSArray *array = [NSArray arrayWithArray:[chapter findAll]];
+    //DDLog(@"count=%@", [chapter findByCriteria:[NSString stringWithFormat:@" WHERE novelName='%@'", novelName]]);
+    NSArray *array = [chapter findByCriteria:[NSString stringWithFormat:@" WHERE novelName='%@'", novelName]];
+    if (array.count > 0) {
+        novelChapterArray = [array sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
+            NSComparisonResult result = [((chapter*)obj1).chapterName compare:((chapter*)obj2).chapterName];
+            return result == NSOrderedDescending; // 升序
+        }];
 
-
-    novelChapterArray = [array sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
-        NSComparisonResult result = [((chapter*)obj1).chapterName compare:((chapter*)obj2).chapterName];
-        return result == NSOrderedDescending; // 升序
-    }];
-
-
-
-    DDLog(@"count=%d", novelChapterArray.count);
-
-    [self createData];
-
-
-
-
-
-    [self createUI];
+        DDLog(@"count=%d", novelChapterArray.count);
+        [self createData];
+        [self createUI];
+    }
 }
 
 -(void)setTextData:(NSString*)string{
@@ -73,7 +65,7 @@
     NSLog(@"fileIndex=%d", fileIndex);
     chapter *p1 = novelChapterArray[fileIndex++];
     textString = p1.chapterContent;
-    NSLog(@"textString=%@", textString);
+    //NSLog(@"textString=%@", textString);
     storage = [[NSTextStorage alloc]initWithString:textString];
     layoutManager = [[NSLayoutManager alloc]init];
     [storage addLayoutManager:layoutManager];

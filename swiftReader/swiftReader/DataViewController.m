@@ -23,7 +23,7 @@
 -(void)setContainer:(NSTextContainer *)textContainer{
     UITextView *textView = [[UITextView alloc]initWithFrame:self.view.frame textContainer:textContainer];
     textView.editable = NO;
-    textView.font = [UIFont fontWithName:@"AppleGothic" size:30];
+    textView.font = [UIFont fontWithName:@"AppleGothic" size:20];
     [self.view addSubview:textView];
 }
 

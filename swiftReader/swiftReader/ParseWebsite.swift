@@ -34,12 +34,17 @@ class ParseWebsite: NSObject {
             let novelSummary  = hppleElement.firstChildWithClassName("articleInfoRight").firstChildWithTagName("span").firstChildWithTagName("dl").firstChildWithTagName("dd").text()
             let novelAuthor   = hppleElement.firstChildWithClassName("articleInfoRight").firstChildWithTagName("span").firstChildWithTagName("h1").firstChildWithTagName("b").text()
 
+            print("novelName>>>>>>>>>>>>>>>=\(novelName)");
+
             if((novelName?.containsString("：")) != nil){
                 let array = (novelName?.componentsSeparatedByString("："))! as NSArray
                 novelName = array.lastObject as! String
-            }else{
+                print("novelName>>>>>>11111>>>>>>>>>=\(novelName)");
+            }
+            if((novelName?.containsString(":")) != nil){
                 let array = (novelName?.componentsSeparatedByString(":"))! as NSArray
                 novelName = array.lastObject as! String
+                print("novelName>>>>>>22222>>>>>>>>>=\(novelName)");
             }
             let result = searchResult()
             result.searchkey        = keyValue as String
@@ -49,13 +54,15 @@ class ParseWebsite: NSObject {
             result.novelSummary     = novelSummary
             result.novelAuthor      = novelAuthor
 
-            NSLog("链接==\(novelIndexURL)");
+            NSLog("链接==\(novelIndexURL)")
+            NSLog("title==\(novelTitle)");
             NSLog("封页=\(novelJPGURL)")
             NSLog("书名=\(novelName)")
             NSLog("简介=\(novelSummary)")
             NSLog("作者=\(novelAuthor)")
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 result.save()
+                NSLog("%@", result)
                 dispatch_async(dispatch_get_main_queue(), {
                     print("send a notofication")
                     NSNotificationCenter.defaultCenter().postNotificationName("MyMotification", object: self, userInfo: ["action":"searchOK"])
@@ -148,6 +155,7 @@ class ParseWebsite: NSObject {
                     print("\(chapterTitle)-----\(downloadNum)-----\(totalChapterNum)")
 
                     let oneChapter = chapter()
+                    oneChapter.novelName = book.novelName
                     oneChapter.chapterURL = chapterURL
                     oneChapter.chapterName = chapterName
                     oneChapter.chapterTitle = chapterTitle
