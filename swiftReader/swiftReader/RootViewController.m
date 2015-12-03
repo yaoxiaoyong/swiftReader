@@ -9,6 +9,8 @@
 #import "RootViewController.h"
 #import "DataViewController.h"
 
+#define DDLog(xx, ...) NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+
 @interface RootViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 
 @end
@@ -20,21 +22,21 @@
     BOOL _isRequestPrePage;
     NSTextStorage *storage;
     NSLayoutManager *layoutManager;
+    NSTextContainer *textContainer;
+    NSString *textString;
+    NSInteger *fileIndex;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.navigationController setNavigationBarHidden:YES];
+    fileIndex = 1;
 
-    NSString *textString = [[NSString alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Chapter7" ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
+    _dataArray = [[NSMutableArray alloc]init];
+    [_dataArray addObject:@"1"];
+    [_dataArray addObject:@"2"];
 
-    // 2.将字符串封装到TextStorage中
-    storage = [[NSTextStorage alloc]initWithString:textString];
 
-    // 3.为TextStorag添加一个LayoutManager
-    layoutManager = [[NSLayoutManager alloc]init];
-    [storage addLayoutManager:layoutManager];
 
     [self createData];
     [self createUI];
@@ -45,10 +47,19 @@
 
 -(void)createData
 {
-    // 初始数据，只有前两页
-    _dataArray = [[NSMutableArray alloc]init];
-    [_dataArray addObject:@"1"];
-    [_dataArray addObject:@"2"];
+    NSString *filename = [NSString stringWithFormat:@"Chapter%d", fileIndex];
+    DDLog();
+    [self.navigationController setNavigationBarHidden:YES];
+    DDLog(@"filename=%@", filename);
+    textString = [[NSString alloc]initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:filename ofType:@"txt"] encoding:NSUTF8StringEncoding error:nil];
+    DDLog();
+    // 2.将字符串封装到TextStorage中
+    storage = [[NSTextStorage alloc]initWithString:textString];
+    DDLog();
+    // 3.为TextStorag添加一个LayoutManager
+    layoutManager = [[NSLayoutManager alloc]init];
+    [storage addLayoutManager:layoutManager];
+    DDLog();
 }
 
 -(void)createUI
@@ -66,9 +77,29 @@
 // 根据返回dataSource数组中对应的viewController
 -(DataViewController *)dataViewControllerAtIndex:(NSUInteger)index withLayout:(NSLayoutManager *)layoutManager
 {
-    NSLog(@"crete a new textView");
+    NSLog(@"crete a new textView, fileIndex=%ld", fileIndex);
+
+    textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+    [layoutManager addTextContainer:textContainer];
+    // 排版结束的判断
+    NSRange range = [layoutManager glyphRangeForTextContainer:textContainer];  // 此方法用来获取当前TextContainer内的文本Range
+    if ( range.length + range.location == textString.length ){
+        NSLog(@"out of range");
+        fileIndex = 3;
+        [self createData];
+        NSLog(@"out of range111, count=%d", layoutManager.textContainers.count);
+        [layoutManager removeTextContainerAtIndex:layoutManager.textContainers.count -1];
+        textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+        NSLog(@"out of range222");
+        [layoutManager addTextContainer:textContainer];
+    }
+
+    NSLog(@"333");
+
+
+
     DataViewController *dvc = [[DataViewController alloc]init];
-    [dvc setLayout:layoutManager];
+    [dvc setContainer:textContainer];
     dvc.index = [_dataArray objectAtIndex:index];
     [dvc setDataSource:@"test"];
     dvc.backColor = [UIColor lightGrayColor];

@@ -11,7 +11,7 @@
 @interface DataViewController ()
 @property (strong,nonatomic) NSString * dataString;
 
-@property (strong, nonatomic) NSLayoutManager *layoutManager;
+@property (strong, nonatomic) NSTextContainer *textContainer;
 @end
 
 
@@ -20,12 +20,7 @@
 
 @implementation DataViewController
 
--(void)setLayout:(NSLayoutManager *)layoutManager{
-    _layoutManager = layoutManager;
-
-    NSTextContainer *textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(Width, Hight)];
-    [_layoutManager addTextContainer:textContainer];
-
+-(void)setContainer:(NSTextContainer *)textContainer{
     UITextView *textView = [[UITextView alloc]initWithFrame:self.view.frame textContainer:textContainer];
     textView.editable = NO;
     textView.font = [UIFont fontWithName:@"AppleGothic" size:30];

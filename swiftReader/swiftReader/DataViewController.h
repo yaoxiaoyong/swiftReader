@@ -20,6 +20,6 @@
 
 -(void)setDataSource:(NSString*)dataString;
 
--(void)setLayout:(NSLayoutManager *)layoutManager;
+-(void)setContainer:(NSTextContainer *)textContainer;
 
 @end
