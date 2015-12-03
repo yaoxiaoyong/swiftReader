@@ -107,66 +107,61 @@ class ParseWebsite: NSObject {
         let totalChapterNum = array.count
 
         Async.background {
-            print("1111")
-            sleep(10)
-            }.main {
+            for var index = 0; index < totalChapterNum; index++ {
+                let hppleElement:TFHppleElement = array[index] as! TFHppleElement
+                let chapterName = hppleElement.objectForKey("href")
+                let chapterURL = book.novelIndexURL.stringByReplacingOccurrencesOfString("index.html", withString: chapterName)
+                Alamofire.request(.GET, chapterURL, parameters: nil).response {
+                    (request, response, data, error) in
+
+                    downloadNum++
+
+                    let chapterParse: TFHpple = TFHpple.init(HTMLData: data)
+
+                    let elements = chapterParse.searchWithXPathQuery("//div[@class='readerTitle']")
+                    if(elements.count == 0){
+                        print("=======1>\(data)-------\(response)")
+                        return
+                    }else if(elements == nil){
+                        print("=======3>\(data)")
+                    }
+                    let chapterTitle = elements[0].firstChildWithTagName("h1").text()
+
+                    let contentElement = chapterParse.searchWithXPathQuery("//div[@class='readerContent']//div[@id='content']")
+                    if(contentElement.count == 0){
+                        print("=======2>\(chapterURL)")
+                        return
+                    }else if(contentElement == nil){
+                        print("=======4>\(chapterURL)")
+                    }
+                    let array = NSMutableArray()
+                    for hppleElement in contentElement{
+                        for child in hppleElement.children as NSArray{
+                            if (child.isTextNode()){
+                                array.addObject(child.content)
+                            }
+                        }
+                    }
+                    let chapterContent = array.componentsJoinedByString(" ")
+
+
+                    print("\(chapterTitle)-----\(downloadNum)-----\(totalChapterNum)")
+
+                    let oneChapter = chapter()
+                    oneChapter.chapterURL = chapterURL
+                    oneChapter.chapterName = chapterName
+                    oneChapter.chapterTitle = chapterTitle
+                    oneChapter.chapterContent = chapterContent
+                    let findResult = chapter.findByCriteria(" WHERE chapterName ='\(chapterName)' and novelName = '\(book.novelName)'")
+                    if(findResult.count == 0){
+                        oneChapter.save()
+                    }
+                }
+            }
+        }.main {
             print("send a notofication")
             NSNotificationCenter.defaultCenter().postNotificationName("MyMotification", object: self, userInfo: ["action":"downloadOK"])
         }
-        for var index = 0; index < totalChapterNum; index++ {
-            let hppleElement:TFHppleElement = array[index] as! TFHppleElement
-            let chapterName = hppleElement.objectForKey("href")
-            let chapterURL = book.novelIndexURL.stringByReplacingOccurrencesOfString("index.html", withString: chapterName)
-            Alamofire.request(.GET, chapterURL, parameters: nil).response {
-                (request, response, data, error) in
-
-                downloadNum++
-
-                let chapterParse: TFHpple = TFHpple.init(HTMLData: data)
-
-                let elements = chapterParse.searchWithXPathQuery("//div[@class='readerTitle']")
-                if(elements.count == 0){
-                    print("=======1>\(data)-------\(response)")
-                    return
-                }else if(elements == nil){
-                    print("=======3>\(data)")
-                }
-                let chapterTitle = elements[0].firstChildWithTagName("h1").text()
-
-                let contentElement = chapterParse.searchWithXPathQuery("//div[@class='readerContent']//div[@id='content']")
-                if(contentElement.count == 0){
-                    print("=======2>\(chapterURL)")
-                    return
-                }else if(contentElement == nil){
-                    print("=======4>\(chapterURL)")
-                }
-                let array = NSMutableArray()
-                for hppleElement in contentElement{
-                    for child in hppleElement.children as NSArray{
-                        if (child.isTextNode()){
-                            array.addObject(child.content)
-                        }
-                    }
-                }
-                let chapterContent = array.componentsJoinedByString(" ")
-
-
-                print("\(chapterTitle)-----\(downloadNum)-----\(totalChapterNum)")
-
-                let oneChapter = chapter()
-                oneChapter.chapterURL = chapterURL
-                oneChapter.chapterName = chapterName
-                oneChapter.chapterTitle = chapterTitle
-                oneChapter.chapterContent = chapterContent
-                let findResult = chapter.findByCriteria(" WHERE chapterName ='\(chapterName)' and novelName = '\(book.novelName)'")
-                if(findResult.count == 0){
-                    oneChapter.save()
-                }
-            }
-        }
-
-        /*
-        */
     }
 
 
