@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AsyncSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,17 +42,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>418BE59436077B367F9F4270353B0EDF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4E155FBB6070C868840C7A2BB6E75E85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>D635F027F0A6FD04B98B790907265430</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D6545BE038C467F2BB0ABE02B6CADD85</key>
 		<dict>
 			<key>primary</key>
 			<true/>

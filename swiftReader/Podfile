@@ -5,3 +5,4 @@ pod 'MBProgressHUD'
 pod 'hpple'
 pod 'FMDB’
 pod 'Alamofire'
+pod "AsyncSwift"
