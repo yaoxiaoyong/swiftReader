@@ -13,8 +13,8 @@ class BookCell: UICollectionViewCell {
     var imageview = UIImageView()
     var label = UILabel()
 
-    convenience   required   init(coder : NSCoder){
-        self.init(frame:CGRect(x: 0, y: 0, width: 80, height: 120))
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
     }
 
     override  init(frame: CGRect) {
@@ -28,4 +28,10 @@ class BookCell: UICollectionViewCell {
         self.addSubview(self.label)
 
     }
+
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        let p = (touches as NSSet).anyObject()?.location
+//
+//        print("location=\(p)")
+//    }
 }

@@ -11,6 +11,7 @@
 		DF2589761C115987008B1FB4 /* MyBookShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2589751C115987008B1FB4 /* MyBookShelfViewController.m */; };
 		DF2589791C115AB1008B1FB4 /* UIScrollView+DXRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2589781C115AB1008B1FB4 /* UIScrollView+DXRefresh.m */; };
 		DF25897B1C116CA3008B1FB4 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF25897A1C116CA3008B1FB4 /* BookCell.swift */; };
+		DF258BDD1C1194FC00A8A2E2 /* ReaderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF258BDC1C1194FC00A8A2E2 /* ReaderUtils.swift */; };
 		DF28EAB31C0D821B00D8EC9F /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB21C0D821B00D8EC9F /* utils.m */; };
 		DF28EAB51C0D89B000D8EC9F /* marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB41C0D89B000D8EC9F /* marco.swift */; };
 		DF946C141C10365C00FAFE93 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C111C10365C00FAFE93 /* DataViewController.m */; };
@@ -123,6 +124,7 @@
 		DF2589771C115AB1008B1FB4 /* UIScrollView+DXRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+DXRefresh.h"; path = "bookshelf/UIScrollView+DXRefresh.h"; sourceTree = "<group>"; };
 		DF2589781C115AB1008B1FB4 /* UIScrollView+DXRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+DXRefresh.m"; path = "bookshelf/UIScrollView+DXRefresh.m"; sourceTree = "<group>"; };
 		DF25897A1C116CA3008B1FB4 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
+		DF258BDC1C1194FC00A8A2E2 /* ReaderUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReaderUtils.swift; sourceTree = "<group>"; };
 		DF28EAB11C0D821B00D8EC9F /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		DF28EAB21C0D821B00D8EC9F /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		DF28EAB41C0D89B000D8EC9F /* marco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = marco.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				DF25897A1C116CA3008B1FB4 /* BookCell.swift */,
 				DFA9690E1C0CBBF2008129FF /* searchViewController.swift */,
 				DFA969101C0CBCB6008129FF /* chapterViewController.swift */,
+				DF258BDC1C1194FC00A8A2E2 /* ReaderUtils.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				DFA969881C0CBCFA008129FF /* MJRefreshHeaderView.m in Sources */,
 				DFA968EA1C0CB322008129FF /* UIView+JDFlipImageView.m in Sources */,
 				DFA9699C1C0CBCFA008129FF /* E_ScrollViewController.m in Sources */,
+				DF258BDD1C1194FC00A8A2E2 /* ReaderUtils.swift in Sources */,
 				DF2589791C115AB1008B1FB4 /* UIScrollView+DXRefresh.m in Sources */,
 				DFA968F11C0CB322008129FF /* CYViewControllerTransitioningDelegate.m in Sources */,
 				DFA969901C0CBCFA008129FF /* E_DrawerView.m in Sources */,
