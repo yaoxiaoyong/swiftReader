@@ -64,8 +64,6 @@ class searchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     //////
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        //dataArr = searchResult.findByCriteria(" WHERE searchkey ='\(self.tfSearch?.text)'")
-        //dataArr = searchResult.findAll()
         NSLog("111115=\(dataArr.count)")
         return dataArr.count
     }

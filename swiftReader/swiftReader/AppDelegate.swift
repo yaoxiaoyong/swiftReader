@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let searchVC = searchViewController.sharedInstance
         searchVC.title = "搜索"
 
-        let dvc = RootViewController()
+        let dvc = chapterViewController()
         dvc.title = "读书"
 
 

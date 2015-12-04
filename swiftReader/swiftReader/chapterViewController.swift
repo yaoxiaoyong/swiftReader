@@ -19,6 +19,8 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        selectedNovelNale = "武道天心"
+
         self.tableView?.frame = self.view.frame
         // 设置tableView的数据源
         self.tableView!.dataSource=self
@@ -30,16 +32,17 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     func reloadDataSource(){
-        dataArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelNale)'")
+        let array:NSArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelNale)'")
+        dataArray = array.sort{($0 as! chapter).chapterName > ($1 as! chapter).chapterName}
         self.tableView!.reloadData()
     }
 
 
     //////
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        //dataArr = searchResult.findByCriteria(" WHERE searchkey ='\(self.tfSearch?.text)'")
-        //dataArr = searchResult.findAll()
-        NSLog("111115=\(dataArray.count)")
+        let array:NSArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelNale)'")
+        dataArray = array.sort{($0 as! chapter).chapterName < ($1 as! chapter).chapterName}
+
         return dataArray.count
     }
 
@@ -48,28 +51,15 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         let obj = dataArray[indexPath.row]
         //NSLog("obj=\(obj)")
-//        cell.textLabel!.text        = obj.novelName
-//        cell.detailTextLabel?.text  = obj.novelIndexURL
+        cell.textLabel!.text        = obj.chapterTitle
+        cell.detailTextLabel?.text  = obj.chapterName
         return cell;
     }
 
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         NSLog("click af section:\(indexPath.section)  row:\(indexPath.row)")
-//        let obj = dataArray[indexPath.row] as! searchResult
-//        let book = novel()
-//        book.novelName      = obj.novelName
-//        book.novelSummary   = obj.novelSummary
-//        book.novelJPGURL    = obj.novelJPGURL
-//        book.novelIndexURL  = obj.novelIndexURL
-//        book.novelAuthor    = obj.novelAuthor
-//
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
-//            let array = novel.findByCriteria(" WHERE novelName = '\(book.novelName)'")
-//            if(array.count == 0){
-//                book.save()
-//            }
-//            NSLog("开始下载")
-//            ParseWebsite.sharedInstance.downloadNovel(book)
-//        })
+        let obj = dataArray[indexPath.row] as! chapter
+        //print("\(obj)")
+        self.navigationController?.pushViewController(RootViewController(), animated: true)
     }
 }

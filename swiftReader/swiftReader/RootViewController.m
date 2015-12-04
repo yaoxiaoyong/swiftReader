@@ -43,15 +43,13 @@
     [_dataArray addObject:@"1"];
     [_dataArray addObject:@"2"];
 
-    //DDLog(@"count=%@", [chapter findByCriteria:[NSString stringWithFormat:@" WHERE novelName='%@'", novelName]]);
     NSArray *array = [chapter findByCriteria:[NSString stringWithFormat:@" WHERE novelName='%@'", novelName]];
     if (array.count > 0) {
-        novelChapterArray = [array sortedArrayUsingComparator:^NSComparisonResult(NSDictionary *obj1, NSDictionary *obj2) {
+        novelChapterArray = [array sortedArrayUsingComparator:^NSComparisonResult(chapter *obj1, chapter *obj2) {
             NSComparisonResult result = [((chapter*)obj1).chapterName compare:((chapter*)obj2).chapterName];
             return result == NSOrderedDescending; // 升序
         }];
 
-        DDLog(@"count=%d", novelChapterArray.count);
         [self createData];
         [self createUI];
     }
