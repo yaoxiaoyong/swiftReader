@@ -23,8 +23,8 @@ class ParseWebsite: NSObject {
     func parseANovelIndex(xpathParser:TFHpple, keyValue:NSString){
         var items = xpathParser.searchWithXPathQuery("//div[@class='articleInfo']")
         if(items.count == 0){
-            var items1 = xpathParser.searchWithXPathQuery("//div")
-            print("========>item1=\(items1.count)")
+            //var items1 = xpathParser.searchWithXPathQuery("//div")
+            //print("========>item1=\(items1.count)")
             return
         }else{
             var hppleElement  = items[0]
@@ -55,12 +55,12 @@ class ParseWebsite: NSObject {
             result.novelSummary     = novelSummary
             result.novelAuthor      = novelAuthor
 
-            NSLog("链接==\(novelIndexURL)")
-            NSLog("title==\(novelTitle)");
-            NSLog("封页=\(novelJPGURL)")
-            NSLog("书名=\(novelName)")
-            NSLog("简介=\(novelSummary)")
-            NSLog("作者=\(novelAuthor)")
+            //NSLog("链接==\(novelIndexURL)")
+            //NSLog("title==\(novelTitle)");
+            //NSLog("封页=\(novelJPGURL)")
+            //NSLog("书名=\(novelName)")
+            //NSLog("简介=\(novelSummary)")
+            //NSLog("作者=\(novelAuthor)")
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
                 result.save()
                 NSLog("%@", result)

@@ -23,17 +23,24 @@ class ReaderUtils: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        self.label = UILabel(frame: CGRectMake(self.frame.width-200, self.frame.height-45, 200, 60))
-        self.label.textAlignment = NSTextAlignment.Center
-        self.label.textColor = UIColor.whiteColor()
-        self.label.text = "第\(chapterNum)章     第\(pageNum)页"
-        self.addSubview(self.label)
+        self.backgroundColor = UIColor.clearColor()
 
-        self.textview = UITextView(frame: self.frame, textContainer: textContrainer)
+        self.textview = UITextView()//(frame: CGRectMake(0, 0, frame.width, frame.height), textContainer: self.textContrainer)
 
         self.textview.editable = false
+        self.textview.textColor = UIColor.purpleColor()
+        self.textview.backgroundColor = UIColor.greenColor()
         self.textview.font = UIFont(name: "AppleGothic", size: 20.0)
         self.addSubview(self.textview)
+        self.label = UILabel(frame: CGRectMake(200, frame.height-20, 200, 20))
+        self.label.textAlignment = NSTextAlignment.Center
+        self.label.textColor = UIColor.purpleColor()
+        self.label.font = UIFont(name: "AppleGothic", size: 10.0)
+        self.label.text = "第\(chapterNum)章     第\(pageNum)页"
+        self.addSubview(self.label)
+    }
+    func setContainer(container:NSTextContainer){
+        self.textContrainer = container
     }
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

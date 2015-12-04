@@ -27,8 +27,6 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        selectedNovelName = "武道天心"
-
         self.tableView?.frame = self.view.frame
         // 设置tableView的数据源
         self.tableView!.dataSource=self
@@ -70,8 +68,7 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         NSLog("click af section:\(indexPath.section)  row:\(indexPath.row)")
         let obj = dataArray[indexPath.row] as! chapter
-        ReaderViewController.sharedInstance().setNovelNameAndChapter(obj.novelName, chapterNum: indexPath.row)
-        //print("\(obj)")
-        self.navigationController?.pushViewController(ReaderViewController.sharedInstance(), animated: true)
+        EReaderViewController.sharedInstance.setReadingNovelNameAndChapter(obj.novelName, chapterNum: indexPath.row)
+        self.navigationController?.pushViewController(EReaderViewController.sharedInstance, animated: true)
     }
 }
