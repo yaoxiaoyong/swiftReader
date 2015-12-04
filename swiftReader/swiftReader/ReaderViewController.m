@@ -1,21 +1,21 @@
 //
-//  RootViewController.m
+//  ReaderViewController.m
 //  PageViewControllerDemo
 //
 //  Created by SACRELEE on 15/4/12.
 //  Copyright (c) 2015年 Sumtice：http://sacrelee.me. All rights reserved.
 //
 
-#import "RootViewController.h"
+#import "ReaderViewController.h"
 #import "DataViewController.h"
 
 #define DDLog(xx, ...) NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
-@interface RootViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+@interface ReaderViewController ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 
 @end
 
-@implementation RootViewController
+@implementation ReaderViewController
 {
     NSMutableArray *_dataArray;
     UIPageViewController *_pageViewController;
@@ -28,6 +28,16 @@
 
     NSString *novelName;
     NSArray * novelChapterArray;
+}
+
+static ReaderViewController *instance;
++ (instancetype) sharedInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    return instance;
 }
 
 - (void)viewDidLoad {

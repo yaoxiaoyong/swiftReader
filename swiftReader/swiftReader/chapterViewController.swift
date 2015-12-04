@@ -60,6 +60,6 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
         NSLog("click af section:\(indexPath.section)  row:\(indexPath.row)")
         let obj = dataArray[indexPath.row] as! chapter
         //print("\(obj)")
-        self.navigationController?.pushViewController(RootViewController(), animated: true)
+        self.navigationController?.pushViewController(ReaderViewController(), animated: true)
     }
 }

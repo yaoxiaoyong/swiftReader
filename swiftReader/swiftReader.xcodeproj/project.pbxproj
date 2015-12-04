@@ -11,7 +11,7 @@
 		DF28EAB31C0D821B00D8EC9F /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB21C0D821B00D8EC9F /* utils.m */; };
 		DF28EAB51C0D89B000D8EC9F /* marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB41C0D89B000D8EC9F /* marco.swift */; };
 		DF946C141C10365C00FAFE93 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C111C10365C00FAFE93 /* DataViewController.m */; };
-		DF946C151C10365C00FAFE93 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C131C10365C00FAFE93 /* RootViewController.m */; };
+		DF946C151C10365C00FAFE93 /* ReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C131C10365C00FAFE93 /* ReaderViewController.m */; };
 		DF946C1D1C10433C00FAFE93 /* Chapter1.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C161C10433C00FAFE93 /* Chapter1.txt */; };
 		DF946C1E1C10433C00FAFE93 /* Chapter2.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C171C10433C00FAFE93 /* Chapter2.txt */; };
 		DF946C1F1C10433C00FAFE93 /* Chapter3.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C181C10433C00FAFE93 /* Chapter3.txt */; };
@@ -120,8 +120,8 @@
 		DF28EAB41C0D89B000D8EC9F /* marco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = marco.swift; sourceTree = "<group>"; };
 		DF946C101C10365C00FAFE93 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
 		DF946C111C10365C00FAFE93 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
-		DF946C121C10365C00FAFE93 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		DF946C131C10365C00FAFE93 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		DF946C121C10365C00FAFE93 /* ReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReaderViewController.h; sourceTree = "<group>"; };
+		DF946C131C10365C00FAFE93 /* ReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReaderViewController.m; sourceTree = "<group>"; };
 		DF946C161C10433C00FAFE93 /* Chapter1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter1.txt; sourceTree = "<group>"; };
 		DF946C171C10433C00FAFE93 /* Chapter2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter2.txt; sourceTree = "<group>"; };
 		DF946C181C10433C00FAFE93 /* Chapter3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter3.txt; sourceTree = "<group>"; };
@@ -523,8 +523,8 @@
 			children = (
 				DF946C101C10365C00FAFE93 /* DataViewController.h */,
 				DF946C111C10365C00FAFE93 /* DataViewController.m */,
-				DF946C121C10365C00FAFE93 /* RootViewController.h */,
-				DF946C131C10365C00FAFE93 /* RootViewController.m */,
+				DF946C121C10365C00FAFE93 /* ReaderViewController.h */,
+				DF946C131C10365C00FAFE93 /* ReaderViewController.m */,
 				DFA9688C1C0CAEBA008129FF /* ViewController.swift */,
 				DFA9690E1C0CBBF2008129FF /* searchViewController.swift */,
 				DFA969101C0CBCB6008129FF /* chapterViewController.swift */,
@@ -1025,7 +1025,7 @@
 				DFA9699E1C0CBCFA008129FF /* E_WebViewControler.m in Sources */,
 				DFA969931C0CBCFA008129FF /* E_MagnifiterView.m in Sources */,
 				DFA9699A1C0CBCFA008129FF /* E_CommentViewController.m in Sources */,
-				DF946C151C10365C00FAFE93 /* RootViewController.m in Sources */,
+				DF946C151C10365C00FAFE93 /* ReaderViewController.m in Sources */,
 				DFA968EC1C0CB322008129FF /* CoreLaunchPlus.m in Sources */,
 				DFA9698B1C0CBCFA008129FF /* UIView+Extension.m in Sources */,
 				DFA969761C0CBCFA008129FF /* E_Mark.m in Sources */,

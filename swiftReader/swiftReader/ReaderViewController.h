@@ -1,5 +1,5 @@
 //
-//  RootViewController.h
+//  ReaderViewController.h
 //  PageViewControllerDemo
 //
 //  Created by SACRELEE on 15/4/12.
@@ -17,10 +17,10 @@
 
 #import "utils.h"
 
-#import "RootViewController.h"
+#import "ReaderViewController.h"
 #import "DataViewController.h"
 
 
-@interface RootViewController : UIViewController
+@interface ReaderViewController : UIViewController
 
 @end
