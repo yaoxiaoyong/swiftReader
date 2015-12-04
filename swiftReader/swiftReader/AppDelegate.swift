@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let vc = MyBookShelfViewController()
+        let vc = BookShelfViewController()
         vc.title = "书架"
 
         let searchVC = searchViewController.sharedInstance

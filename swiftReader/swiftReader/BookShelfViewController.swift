@@ -10,40 +10,28 @@ import UIKit
 
 import Alamofire
 
-class BookShelfViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource {
+class BookShelfViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
-    var collectionview  = UICollectionView();
+    var collectionview  = UICollectionView(frame: CGRectMake(0, 0, 320, 480), collectionViewLayout: UICollectionViewFlowLayout());
+
     var dataArray       = NSArray();
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleNotification:", name: "MyMotification", object: nil)
 
 
-        let layout = UICollectionViewFlowLayout()
-        /*
-
-        allFlowLayout.minimumLineSpacing = lineSpacing;
-        */
-        layout.itemSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)
-        layout.minimumInteritemSpacing = 5.0
-        layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5)
-
-        self.collectionview = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-
+        self.collectionview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         self.collectionview.dataSource = self
 
         self.collectionview.delegate = self
 
         self.view.addSubview(self.collectionview)
         self.collectionview.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-
-        //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cellID"];
-        
     }
-
-
 
     func handleNotification(sender:AnyObject){
         print("call to handle Notification here\(sender)");
@@ -54,6 +42,10 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         super.didReceiveMemoryWarning()
     }
 
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
+        return 1
+    }
+
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return 8;
     }
@@ -62,6 +54,24 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         var cell = self.collectionview.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
         cell.backgroundColor = UIColor.purpleColor()
         return cell
+    }
+
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
+        NSLog("====>")
+    }
+
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+        return CGSizeMake(80, 120)
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
+        return UIEdgeInsetsMake(0, 5, 5, 5)
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
+        return 5.0
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
+        return 5.0
     }
 }
 
