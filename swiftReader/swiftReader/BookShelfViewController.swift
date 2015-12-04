@@ -20,15 +20,11 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         super.viewDidLoad()
 
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleNotification:", name: "MyMotification", object: nil)
-
 
         self.collectionview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         self.collectionview.dataSource = self
-
         self.collectionview.delegate = self
-
         self.view.addSubview(self.collectionview)
         self.collectionview.registerClass(BookCell.self, forCellWithReuseIdentifier: "cell")
     }
@@ -55,19 +51,21 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        var cell:BookCell = self.collectionview.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! BookCell
-
+        let cell:BookCell = self.collectionview.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! BookCell
         let book:novel = dataArray[indexPath.row] as! novel
-        NSLog("====>\(book.novelName)")
-
+        if(book.novelJPGURL.length == 0){
+            cell.imageview.image = UIImage(named: "img0")
+        }else{
+            cell.imageview.image = UIImage(data: NSData(data: book.novelJPGURL))
+        }
         cell.backgroundColor = UIColor.purpleColor()
-        //cell.imageview.image = UIImage(data:)
+
         cell.label.text = book.novelName
         return cell
     }
+
     // MARK:UICollectionView Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-
         let book:novel = dataArray[indexPath.row] as! novel
         NSLog("====>\(book.novelName)")
         chapterViewController.sharedInstance.setNovelName(book.novelName)
@@ -82,9 +80,11 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
         return UIEdgeInsetsMake(0, 0, 0, 0)
     }
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 0.0
     }
+
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 0.0
     }

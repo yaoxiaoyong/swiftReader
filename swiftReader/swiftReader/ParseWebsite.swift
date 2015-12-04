@@ -23,34 +23,35 @@ class ParseWebsite: NSObject {
     func parseANovelIndex(xpathParser:TFHpple, keyValue:NSString){
         var items = xpathParser.searchWithXPathQuery("//div[@class='articleInfo']")
         if(items.count == 0){
+            var items1 = xpathParser.searchWithXPathQuery("//div")
+            print("========>item1=\(items1.count)")
             return
         }else{
             var hppleElement  = items[0]
             let novelIndexURL = hppleElement.firstChildWithClassName("articleInfoLeft").firstChildWithTagName("p").firstChildWithTagName("a").objectForKey("href")
             let nodevalue     = hppleElement.firstChildWithClassName("articleInfoLeft").firstChildWithTagName("p").firstChildWithTagName("a").firstChildWithTagName("img").attributes as NSDictionary
-            let novelJPGURL   = nodevalue .valueForKey("src")
+            let jpgurl:String = nodevalue.valueForKey("src") as! String
+
+            let novelJPGURL   = NSData(contentsOfURL:NSURL(string: jpgurl)!)
+
             var novelName     = nodevalue.valueForKey("alt")
             let novelTitle    = nodevalue.valueForKey("title")
             let novelSummary  = hppleElement.firstChildWithClassName("articleInfoRight").firstChildWithTagName("span").firstChildWithTagName("dl").firstChildWithTagName("dd").text()
             let novelAuthor   = hppleElement.firstChildWithClassName("articleInfoRight").firstChildWithTagName("span").firstChildWithTagName("h1").firstChildWithTagName("b").text()
 
-            print("novelName>>>>>>>>>>>>>>>=\(novelName)");
-
             if((novelName?.containsString("：")) != nil){
                 let array = (novelName?.componentsSeparatedByString("："))! as NSArray
                 novelName = array.lastObject as! String
-                print("novelName>>>>>>11111>>>>>>>>>=\(novelName)");
             }
             if((novelName?.containsString(":")) != nil){
                 let array = (novelName?.componentsSeparatedByString(":"))! as NSArray
                 novelName = array.lastObject as! String
-                print("novelName>>>>>>22222>>>>>>>>>=\(novelName)");
             }
             let result = searchResult()
             result.searchkey        = keyValue as String
             result.novelName        = novelName as! String
             result.novelIndexURL    = novelIndexURL
-            result.novelJPGURL      = novelJPGURL as! String
+            result.novelJPGURL      = novelJPGURL
             result.novelSummary     = novelSummary
             result.novelAuthor      = novelAuthor
 
@@ -87,13 +88,16 @@ class ParseWebsite: NSObject {
             let hppleParse = utils.THppleParseWithKey(keyValue)
             let array = hppleParse.searchWithXPathQuery("//ul[@class='info']")
             if(array.count > 0){
+                print("========>111")
                 for item in array{
                     let urlstr = item.firstChildWithTagName("a").objectForKey("href")
+                    print("========>111urlstr=\(urlstr)")
                     let parse = utils.THppleParseWithURL(urlstr)
                     self.parseANovelIndex(parse, keyValue: keyValue)
                 }
             }
             else{
+                print("========>112")
                 self.parseANovelIndex(hppleParse, keyValue: keyValue)
             }
         }

@@ -36,13 +36,24 @@
 
 +(TFHpple*)THppleParseWithURL:(NSString*)url{
     NSError *err = nil;
-    //NSLog(@"url:%@", url);
-    NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:CHINESE_CODING]]
-                                                    encoding:CHINESE_CODING
-                                                       error:&err];
-    //NSLog(@"htmlString:%@", htmlString);
-    TFHpple *xpathParser = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding]];
-    return xpathParser;
+    NSLog(@"url:%@", url);
+    @try {
+        NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:CHINESE_CODING]]
+                                                        encoding:CHINESE_CODING
+                                                           error:&err];
+        NSLog(@"htmlString:%@", htmlString);
+
+        TFHpple *xpathParser = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding]];
+        return xpathParser;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"exception=%@", exception);
+    }
+    @finally {
+
+    }
+
+
 }
 
 +(NSString *)getNovelContentFromChaptrURL:(NSString*)chapterURL

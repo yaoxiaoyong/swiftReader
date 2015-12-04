@@ -16,7 +16,7 @@
 
 @property (nonatomic, copy)     NSString                    *novelIndexURL;
 
-@property (nonatomic, copy)     NSString                    *novelJPGURL;
+@property (nonatomic, copy)     NSData                      *novelJPGURL;
 
 @property (nonatomic, copy)     NSString                    *novelSummary;
 @property (nonatomic, copy)     NSString                    *novelAuthor;

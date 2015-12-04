@@ -49,7 +49,6 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView!.reloadData()
     }
 
-
     //////
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         let array:NSArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelName)'")

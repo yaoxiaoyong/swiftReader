@@ -13,6 +13,7 @@ class searchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var  dataArr = NSArray();
     //声明tableView
     public var tableView :UITableView? = UITableView();
+    
     var tfSearch :UITextField? = UITextField();
 
     class var sharedInstance : searchViewController {
@@ -34,6 +35,7 @@ class searchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.tfSearch?.text = "道"
         self.tfSearch?.delegate = self
         self.tfSearch?.keyboardType = UIKeyboardType.WebSearch
+        self.tfSearch?.backgroundColor = UIColor.lightGrayColor()
 
         self.view.addSubview(self.tfSearch!)
 

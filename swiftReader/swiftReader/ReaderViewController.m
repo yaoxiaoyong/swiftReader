@@ -47,11 +47,7 @@ static ReaderViewController *instance;
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.navigationController.hidesBottomBarWhenPushed = YES;
 
-
-    DDLog(@"novelName=%@, fileIndex=%d", novelName, fileIndex);
-
-//    novelName = @"武道天心";
-//    fileIndex = 0;
+    //DDLog(@"novelName=%@, fileIndex=%d", novelName, fileIndex);
 
     _dataArray = [[NSMutableArray alloc]init];
     [_dataArray addObject:@"1"];
@@ -107,7 +103,7 @@ static ReaderViewController *instance;
 // 根据返回dataSource数组中对应的viewController
 -(DataViewController *)dataViewControllerAtIndex:(NSUInteger)index withLayout:(NSLayoutManager *)layoutManager
 {
-    textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+    textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-50)];
     [layoutManager addTextContainer:textContainer];
     NSRange range = [layoutManager glyphRangeForTextContainer:textContainer];  // 此方法用来获取当前TextContainer内的文本Range
     if ( range.length + range.location == textString.length ){
@@ -116,13 +112,14 @@ static ReaderViewController *instance;
         [self createData];
         //NSLog(@"out of range111, count=%d", layoutManager.textContainers.count);
         [layoutManager removeTextContainerAtIndex:layoutManager.textContainers.count -1];
-        textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+        textContainer = [[NSTextContainer alloc]initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-50)];
         [layoutManager addTextContainer:textContainer];
     }
 
     DataViewController *dvc = [[DataViewController alloc]init];
     [dvc setContainer:textContainer];
     dvc.index = [_dataArray objectAtIndex:index];
+    NSLog(@"fileIndex=%d    dvc.index=%d",fileIndex, dvc.index);
     [dvc setDataSource:@"test"];
     dvc.backColor = [UIColor lightGrayColor];
     return dvc;
