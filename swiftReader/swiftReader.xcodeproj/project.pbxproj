@@ -10,6 +10,7 @@
 		7F0718083B187FC4805B4B50 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F089B344D033C3E49D627AA2 /* Pods.framework */; };
 		DF2589761C115987008B1FB4 /* MyBookShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2589751C115987008B1FB4 /* MyBookShelfViewController.m */; };
 		DF2589791C115AB1008B1FB4 /* UIScrollView+DXRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2589781C115AB1008B1FB4 /* UIScrollView+DXRefresh.m */; };
+		DF25897B1C116CA3008B1FB4 /* BookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF25897A1C116CA3008B1FB4 /* BookCell.swift */; };
 		DF28EAB31C0D821B00D8EC9F /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB21C0D821B00D8EC9F /* utils.m */; };
 		DF28EAB51C0D89B000D8EC9F /* marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB41C0D89B000D8EC9F /* marco.swift */; };
 		DF946C141C10365C00FAFE93 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C111C10365C00FAFE93 /* DataViewController.m */; };
@@ -121,6 +122,7 @@
 		DF2589751C115987008B1FB4 /* MyBookShelfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookShelfViewController.m; sourceTree = "<group>"; };
 		DF2589771C115AB1008B1FB4 /* UIScrollView+DXRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+DXRefresh.h"; path = "bookshelf/UIScrollView+DXRefresh.h"; sourceTree = "<group>"; };
 		DF2589781C115AB1008B1FB4 /* UIScrollView+DXRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+DXRefresh.m"; path = "bookshelf/UIScrollView+DXRefresh.m"; sourceTree = "<group>"; };
+		DF25897A1C116CA3008B1FB4 /* BookCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCell.swift; sourceTree = "<group>"; };
 		DF28EAB11C0D821B00D8EC9F /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		DF28EAB21C0D821B00D8EC9F /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		DF28EAB41C0D89B000D8EC9F /* marco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = marco.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				DF946C121C10365C00FAFE93 /* ReaderViewController.h */,
 				DF946C131C10365C00FAFE93 /* ReaderViewController.m */,
 				DFA9688C1C0CAEBA008129FF /* BookShelfViewController.swift */,
+				DF25897A1C116CA3008B1FB4 /* BookCell.swift */,
 				DFA9690E1C0CBBF2008129FF /* searchViewController.swift */,
 				DFA969101C0CBCB6008129FF /* chapterViewController.swift */,
 			);
@@ -1002,6 +1005,7 @@
 				DFA968FB1C0CB3AA008129FF /* JKDBModel.m in Sources */,
 				DFA969961C0CBCFA008129FF /* E_SearchTableViewCell.m in Sources */,
 				DFA969991C0CBCFA008129FF /* ILSlider.m in Sources */,
+				DF25897B1C116CA3008B1FB4 /* BookCell.swift in Sources */,
 				DFA968F01C0CB322008129FF /* CYPortalTransitionContext.m in Sources */,
 				DFA969771C0CBCFA008129FF /* E_Paging.mm in Sources */,
 				DFA969891C0CBCFA008129FF /* UIScrollView+Extension.m in Sources */,

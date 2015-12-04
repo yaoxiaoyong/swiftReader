@@ -30,7 +30,7 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         self.collectionview.delegate = self
 
         self.view.addSubview(self.collectionview)
-        self.collectionview.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        self.collectionview.registerClass(BookCell.self, forCellWithReuseIdentifier: "cell")
     }
 
     func handleNotification(sender:AnyObject){
@@ -55,8 +55,14 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
-        var cell = self.collectionview.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
+        var cell:BookCell = self.collectionview.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! BookCell
+
+        let book:novel = dataArray[indexPath.row] as! novel
+        NSLog("====>\(book.novelName)")
+
         cell.backgroundColor = UIColor.purpleColor()
+        //cell.imageview.image = UIImage(data:)
+        cell.label.text = book.novelName
         return cell
     }
     // MARK:UICollectionView Delegate
@@ -74,13 +80,13 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         return CGSizeMake(80, 120)
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets{
-        return UIEdgeInsetsMake(0, 5, 5, 5)
+        return UIEdgeInsetsMake(0, 0, 0, 0)
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
-        return 5.0
+        return 0.0
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
-        return 5.0
+        return 0.0
     }
 }
 
