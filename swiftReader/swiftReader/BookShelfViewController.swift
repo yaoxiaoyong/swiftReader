@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  BookShelfViewController.swift
 //  swiftReader
 //
 //  Created by 姚小勇 on 15/12/1.
@@ -10,7 +10,7 @@ import UIKit
 
 import Alamofire
 
-class ViewController: UIViewController {
+class BookShelfViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

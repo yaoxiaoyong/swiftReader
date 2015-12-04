@@ -20,7 +20,7 @@
 		DF946C221C10433C00FAFE93 /* Chapter6.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C1B1C10433C00FAFE93 /* Chapter6.txt */; };
 		DF946C231C10433C00FAFE93 /* Chapter7.txt in Resources */ = {isa = PBXBuildFile; fileRef = DF946C1C1C10433C00FAFE93 /* Chapter7.txt */; };
 		DFA9688B1C0CAEBA008129FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9688A1C0CAEBA008129FF /* AppDelegate.swift */; };
-		DFA9688D1C0CAEBA008129FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9688C1C0CAEBA008129FF /* ViewController.swift */; };
+		DFA9688D1C0CAEBA008129FF /* BookShelfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA9688C1C0CAEBA008129FF /* BookShelfViewController.swift */; };
 		DFA968901C0CAEBA008129FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA9688E1C0CAEBA008129FF /* Main.storyboard */; };
 		DFA968921C0CAEBA008129FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFA968911C0CAEBA008129FF /* Assets.xcassets */; };
 		DFA968951C0CAEBA008129FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFA968931C0CAEBA008129FF /* LaunchScreen.storyboard */; };
@@ -131,7 +131,7 @@
 		DF946C1C1C10433C00FAFE93 /* Chapter7.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Chapter7.txt; sourceTree = "<group>"; };
 		DFA968871C0CAEBA008129FF /* swiftReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA9688A1C0CAEBA008129FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DFA9688C1C0CAEBA008129FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DFA9688C1C0CAEBA008129FF /* BookShelfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfViewController.swift; sourceTree = "<group>"; };
 		DFA9688F1C0CAEBA008129FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFA968911C0CAEBA008129FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DFA968941C0CAEBA008129FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -525,7 +525,7 @@
 				DF946C111C10365C00FAFE93 /* DataViewController.m */,
 				DF946C121C10365C00FAFE93 /* ReaderViewController.h */,
 				DF946C131C10365C00FAFE93 /* ReaderViewController.m */,
-				DFA9688C1C0CAEBA008129FF /* ViewController.swift */,
+				DFA9688C1C0CAEBA008129FF /* BookShelfViewController.swift */,
 				DFA9690E1C0CBBF2008129FF /* searchViewController.swift */,
 				DFA969101C0CBCB6008129FF /* chapterViewController.swift */,
 			);
@@ -997,7 +997,7 @@
 				DFA969981C0CBCFA008129FF /* E_SettingTopBar.m in Sources */,
 				DFA9698E1C0CBCFA008129FF /* UIImage+ImageEffects.m in Sources */,
 				DF28EAB51C0D89B000D8EC9F /* marco.swift in Sources */,
-				DFA9688D1C0CAEBA008129FF /* ViewController.swift in Sources */,
+				DFA9688D1C0CAEBA008129FF /* BookShelfViewController.swift in Sources */,
 				DFA968F31C0CB322008129FF /* UIViewController+PortalTransition.m in Sources */,
 				DFA969A61C0D3DA6008129FF /* searchResult.m in Sources */,
 				DFA9690F1C0CBBF2008129FF /* searchViewController.swift in Sources */,
