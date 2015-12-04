@@ -56,11 +56,8 @@ class searchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     func reloadDataSource(){
-        //print("tfsearch=\(tfSearch?.text)")
-        //dataArr = searchResult.findByCriteria(" WHERE searchkey ='\(tfSearch?.text)'")
-        dataArr = searchResult.findAll()
-        //print("tfsearch=\(searchResult.findAll())")
-        //print("tfsearch=\(dataArr)")
+        NSLog("tfSearch?.text=%@", (tfSearch?.text)!)
+        dataArr = searchResult.findByCriteria(" WHERE searchkey ='\((tfSearch?.text)!)'")
         self.tableView!.reloadData()
     }
 
