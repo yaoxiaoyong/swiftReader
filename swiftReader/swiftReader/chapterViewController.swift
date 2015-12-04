@@ -59,7 +59,8 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         NSLog("click af section:\(indexPath.section)  row:\(indexPath.row)")
         let obj = dataArray[indexPath.row] as! chapter
+        ReaderViewController.sharedInstance().setNovelNameAndChapter(obj.novelName, chapterNum: indexPath.row)
         //print("\(obj)")
-        self.navigationController?.pushViewController(ReaderViewController(), animated: true)
+        self.navigationController?.pushViewController(ReaderViewController.sharedInstance(), animated: true)
     }
 }

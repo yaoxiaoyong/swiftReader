@@ -31,6 +31,7 @@
 }
 
 static ReaderViewController *instance;
+
 + (instancetype) sharedInstance
 {
     static dispatch_once_t onceToken;
@@ -43,11 +44,14 @@ static ReaderViewController *instance;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.navigationController.hidesBottomBarWhenPushed = YES;
 
-    novelName = @"武道天心";
-    fileIndex = 0;
+
+    DDLog(@"novelName=%@, fileIndex=%d", novelName, fileIndex);
+
+//    novelName = @"武道天心";
+//    fileIndex = 0;
 
     _dataArray = [[NSMutableArray alloc]init];
     [_dataArray addObject:@"1"];
@@ -62,8 +66,17 @@ static ReaderViewController *instance;
 
         [self createData];
         [self createUI];
+        DDLog();
     }
+    DDLog();
 }
+
+-(void)setNovelNameAndChapter:(NSString*)Name chapterNum:(NSInteger)chapterNum{
+    DDLog();
+    novelName = Name;
+    fileIndex = chapterNum;
+}
+
 
 -(void)setTextData:(NSString*)string{
 }

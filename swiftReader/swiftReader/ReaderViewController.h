@@ -23,4 +23,13 @@
 
 @interface ReaderViewController : UIViewController
 
+
+
++ (instancetype) sharedInstance;
+
+-(void)setNovelNameAndChapter:(NSString*)novelName chapterNum:(NSInteger)chapterNum;
+
+
+
+
 @end
