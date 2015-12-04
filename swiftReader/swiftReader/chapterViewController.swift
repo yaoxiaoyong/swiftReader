@@ -12,14 +12,22 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     public var dataArray : NSArray = NSArray();
 
-    public var selectedNovelNale:String = "";
+    public var selectedNovelName:String = "";
 
     public var tableView : UITableView? = UITableView();
+
+
+    class var sharedInstance : chapterViewController {
+        struct Static {
+            static let instance : chapterViewController = chapterViewController()
+        }
+        return Static.instance
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        selectedNovelNale = "武道天心"
+//        selectedNovelName = "武道天心"
 
         self.tableView?.frame = self.view.frame
         // 设置tableView的数据源
@@ -31,8 +39,12 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.view.addSubview(self.tableView!)
     }
 
+    func setNovelName(novelName:String){
+        selectedNovelName = novelName
+    }
+
     func reloadDataSource(){
-        let array:NSArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelNale)'")
+        let array:NSArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelName)'")
         dataArray = array.sort{($0 as! chapter).chapterName > ($1 as! chapter).chapterName}
         self.tableView!.reloadData()
     }
@@ -40,7 +52,7 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     //////
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        let array:NSArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelNale)'")
+        let array:NSArray = chapter.findByCriteria(" WHERE novelName ='\(selectedNovelName)'")
         dataArray = array.sort{($0 as! chapter).chapterName < ($1 as! chapter).chapterName}
 
         return dataArray.count

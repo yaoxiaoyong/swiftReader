@@ -38,16 +38,20 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         searchViewController.sharedInstance.reloadDataSource()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func reloadDataSource(){
+        dataArray = novel.findAll()
+        self.collectionview.reloadData()
     }
 
+
+    // MARK:UICollectionView DataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
         return 1
     }
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return 8;
+        dataArray = novel.findAll()
+        return dataArray.count
     }
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
@@ -55,12 +59,17 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         cell.backgroundColor = UIColor.purpleColor()
         return cell
     }
-
+    // MARK:UICollectionView Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
-        NSLog("====>")
+
+        let book:novel = dataArray[indexPath.row] as! novel
+        NSLog("====>\(book.novelName)")
+        chapterViewController.sharedInstance.setNovelName(book.novelName)
+        self.navigationController?.pushViewController(chapterViewController.sharedInstance, animated: true)
+
     }
 
-
+    // MARK:UICollectionViewFlowLayout Delegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
         return CGSizeMake(80, 120)
     }
