@@ -41,7 +41,7 @@
         NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:CHINESE_CODING]]
                                                         encoding:CHINESE_CODING
                                                            error:&err];
-        NSLog(@"htmlString:%@", htmlString);
+        //NSLog(@"htmlString:%@", htmlString);
 
         TFHpple *xpathParser = [TFHpple hppleWithHTMLData:[htmlString dataUsingEncoding:NSUnicodeStringEncoding]];
         return xpathParser;

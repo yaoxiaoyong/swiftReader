@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let nav = UINavigationController(rootViewController: tab)
 
 
-
+        CoreLaunchFlip.animWithWindow(self.window, image: UIImage(named: "img4"))
         self.window?.rootViewController = nav
 
 

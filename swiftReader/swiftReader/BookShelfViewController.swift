@@ -19,12 +19,15 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor = UIColor.purpleColor()
+
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleNotification:", name: "MyMotification", object: nil)
 
         self.collectionview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         self.collectionview.dataSource = self
         self.collectionview.delegate = self
+        self.collectionview.backgroundColor = UIColor.purpleColor()
         self.view.addSubview(self.collectionview)
         self.collectionview.registerClass(BookCell.self, forCellWithReuseIdentifier: "cell")
     }
@@ -38,7 +41,6 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
         dataArray = novel.findAll()
         self.collectionview.reloadData()
     }
-
 
     // MARK:UICollectionView DataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int{
@@ -59,7 +61,6 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
             cell.imageview.image = UIImage(data: NSData(data: book.novelJPGURL))
         }
         cell.backgroundColor = UIColor.purpleColor()
-
         cell.label.text = book.novelName
         return cell
     }
