@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        let vc = BookShelfViewController()
+        let vc = MyBookShelfViewController()
         vc.title = "书架"
 
         let searchVC = searchViewController.sharedInstance
@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let dvc = chapterViewController()
         dvc.title = "读书"
-
 
         let tab = UITabBarController()
         tab.addChildViewController(vc)

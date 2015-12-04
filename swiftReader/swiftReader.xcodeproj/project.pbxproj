@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7F0718083B187FC4805B4B50 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F089B344D033C3E49D627AA2 /* Pods.framework */; };
+		DF2589761C115987008B1FB4 /* MyBookShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2589751C115987008B1FB4 /* MyBookShelfViewController.m */; };
+		DF2589791C115AB1008B1FB4 /* UIScrollView+DXRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2589781C115AB1008B1FB4 /* UIScrollView+DXRefresh.m */; };
 		DF28EAB31C0D821B00D8EC9F /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB21C0D821B00D8EC9F /* utils.m */; };
 		DF28EAB51C0D89B000D8EC9F /* marco.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28EAB41C0D89B000D8EC9F /* marco.swift */; };
 		DF946C141C10365C00FAFE93 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF946C111C10365C00FAFE93 /* DataViewController.m */; };
@@ -115,6 +117,10 @@
 /* Begin PBXFileReference section */
 		5F8A336951A468880F0A531C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7CABE827E86DAA6CDEF6F8CE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DF2589741C115987008B1FB4 /* MyBookShelfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyBookShelfViewController.h; sourceTree = "<group>"; };
+		DF2589751C115987008B1FB4 /* MyBookShelfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyBookShelfViewController.m; sourceTree = "<group>"; };
+		DF2589771C115AB1008B1FB4 /* UIScrollView+DXRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+DXRefresh.h"; path = "bookshelf/UIScrollView+DXRefresh.h"; sourceTree = "<group>"; };
+		DF2589781C115AB1008B1FB4 /* UIScrollView+DXRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIScrollView+DXRefresh.m"; path = "bookshelf/UIScrollView+DXRefresh.m"; sourceTree = "<group>"; };
 		DF28EAB11C0D821B00D8EC9F /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
 		DF28EAB21C0D821B00D8EC9F /* utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
 		DF28EAB41C0D89B000D8EC9F /* marco.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = marco.swift; sourceTree = "<group>"; };
@@ -312,6 +318,17 @@
 				F089B344D033C3E49D627AA2 /* Pods.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF25896B1C114FCA008B1FB4 /* bookshelf */ = {
+			isa = PBXGroup;
+			children = (
+				DF2589771C115AB1008B1FB4 /* UIScrollView+DXRefresh.h */,
+				DF2589781C115AB1008B1FB4 /* UIScrollView+DXRefresh.m */,
+				DF2589741C115987008B1FB4 /* MyBookShelfViewController.h */,
+				DF2589751C115987008B1FB4 /* MyBookShelfViewController.m */,
+			);
+			name = bookshelf;
 			sourceTree = "<group>";
 		};
 		DFA9687E1C0CAEBA008129FF = {
@@ -521,6 +538,7 @@
 		DFA969011C0CB45A008129FF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF25896B1C114FCA008B1FB4 /* bookshelf */,
 				DF946C101C10365C00FAFE93 /* DataViewController.h */,
 				DF946C111C10365C00FAFE93 /* DataViewController.m */,
 				DF946C121C10365C00FAFE93 /* ReaderViewController.h */,
@@ -1011,6 +1029,7 @@
 				DFA969881C0CBCFA008129FF /* MJRefreshHeaderView.m in Sources */,
 				DFA968EA1C0CB322008129FF /* UIView+JDFlipImageView.m in Sources */,
 				DFA9699C1C0CBCFA008129FF /* E_ScrollViewController.m in Sources */,
+				DF2589791C115AB1008B1FB4 /* UIScrollView+DXRefresh.m in Sources */,
 				DFA968F11C0CB322008129FF /* CYViewControllerTransitioningDelegate.m in Sources */,
 				DFA969901C0CBCFA008129FF /* E_DrawerView.m in Sources */,
 				DFA9699D1C0CBCFA008129FF /* E_SearchViewController.m in Sources */,
@@ -1038,6 +1057,7 @@
 				DFA969A31C0D3C4E008129FF /* ParseWebsite.swift in Sources */,
 				DFA969921C0CBCFA008129FF /* E_ListView.m in Sources */,
 				DFA969831C0CBCFA008129FF /* LeftViewController.m in Sources */,
+				DF2589761C115987008B1FB4 /* MyBookShelfViewController.m in Sources */,
 				DFA968FA1C0CB3AA008129FF /* JKDBHelper.m in Sources */,
 				DFA969941C0CBCFA008129FF /* E_MarkTableViewCell.m in Sources */,
 				DFA969811C0CBCFA008129FF /* CDSideBarController.m in Sources */,
