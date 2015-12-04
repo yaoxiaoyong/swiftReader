@@ -2,8 +2,8 @@
 //  ReaderViewController.m
 //  PageViewControllerDemo
 //
-//  Created by SACRELEE on 15/4/12.
-//  Copyright (c) 2015年 Sumtice：http://sacrelee.me. All rights reserved.
+//  Created by 姚小勇. on 15/4/12.
+//  Copyright (c) 2015年 姚小勇. All rights reserved.
 //
 
 #import "ReaderViewController.h"
