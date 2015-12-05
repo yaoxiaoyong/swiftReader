@@ -28,7 +28,7 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.grayColor()
         self.tabBarController?.hidesBottomBarWhenPushed = true
-        currentChapter = 0
+
         self.pageVC = UIPageViewController(transitionStyle: .PageCurl, navigationOrientation:.Horizontal, options: [UIPageViewControllerOptionSpineLocationKey:NSNumber(float: 10)])
         self.pageVC.delegate = self;//设置delegate,提供展示相关的信息和接收手势发起的转换的通知
         self.pageVC.dataSource = self;//设置datasource,提供展示的内容
