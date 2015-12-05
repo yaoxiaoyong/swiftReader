@@ -11,7 +11,7 @@ import UIKit
 class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, UIPageViewControllerDelegate{
     var pageVC = UIPageViewController();
     var dataArray = NSArray();
-    var currentPage:Int = 0;
+    var currentChapter:Int = 0;
     var viewControllers = NSMutableArray()
     var ReadingNovelName:String = NSString() as String
     var textString : String = NSString() as String
@@ -28,67 +28,47 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.grayColor()
         self.tabBarController?.hidesBottomBarWhenPushed = true
-        currentPage = 0
+        currentChapter = 0
         self.pageVC = UIPageViewController(transitionStyle: .PageCurl, navigationOrientation:.Horizontal, options: [UIPageViewControllerOptionSpineLocationKey:NSNumber(float: 10)])
         self.pageVC.delegate = self;//设置delegate,提供展示相关的信息和接收手势发起的转换的通知
         self.pageVC.dataSource = self;//设置datasource,提供展示的内容
-
         dataArray = chapter.findByCriteria(" WHERE novelName ='\(self.ReadingNovelName)'")
-        let oneChapter = dataArray[currentPage]
-        textString = oneChapter.chapterContent
-        //print("\(textString)")
-        let storage = NSTextStorage(string: textString)
-        layoutManager = NSLayoutManager()
-        storage.addLayoutManager(layoutManager)
-
-        let textContainer = NSTextContainer(size: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-50))
-        layoutManager.addTextContainer(textContainer)
-
-        let textview = UITextView(frame: CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height-50), textContainer: textContainer)
-
-        let page = UIViewController()
-        page.view.frame = self.view.frame
-        page.view.addSubview(textview)
-
+        let page = self.generateNewContainer(0, layoutManager: layoutManager, textString: textString)
         viewControllers.addObject(page)
-
         pageVC.setViewControllers([viewControllers.objectAtIndex(0) as! UIViewController], direction: .Forward, animated: true, completion:nil)
-
         self.addChildViewController(pageVC)
         self.view.addSubview(pageVC.view)
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         print("go before")
-        let textContainer = self.generateNewContainer()
-        let textview = UITextView(frame: CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height-50), textContainer: textContainer)
-
-        let page = UIViewController()
-        page.view.frame = self.view.frame
-        page.view.addSubview(textview)
-        viewControllers.addObject(page)
+        let page = self.generateNewContainer(-1, layoutManager: layoutManager, textString: textString)
         return page
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        let textContainer = self.generateNewContainer()
-        let textview = UITextView(frame: CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height-50), textContainer: textContainer)
-        let page = UIViewController()
-        page.view.frame = self.view.frame
-        page.view.addSubview(textview)
-        viewControllers.addObject(page)
-        pageVC.setViewControllers([viewControllers.objectAtIndex(currentPage) as! UIViewController], direction: .Forward, animated: true, completion:nil)
+        let page = self.generateNewContainer(1, layoutManager: layoutManager, textString: textString)
         return page
     }
 
-    func generateNewContainer()->NSTextContainer{
+    func generateNewContainer(direction:NSInteger, var layoutManager:NSLayoutManager, var textString:String)->UIViewController{
         var textContainer = NSTextContainer(size: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-50))
         layoutManager.addTextContainer(textContainer)
         let range:NSRange = layoutManager.glyphRangeForTextContainer(textContainer)
+        var oneChapter  = chapter()
         if(range.length+range.location >= textString.characters.count ){
-            let oneChapter = dataArray[currentPage++]
+            if(direction == 1){
+                oneChapter = dataArray[currentChapter++] as! chapter
+            }else if(direction == -1){
+                if(currentChapter == 0){
+                    oneChapter = dataArray[currentChapter] as! chapter
+                }else{
+                    oneChapter = dataArray[currentChapter--] as! chapter
+                }
+            }else{
+                oneChapter = dataArray[currentChapter] as! chapter
+            }
             textString = oneChapter.chapterContent
-//            print("\(textString)")
             let storage = NSTextStorage(string: textString)
             layoutManager = NSLayoutManager()
             storage.addLayoutManager(layoutManager)
@@ -97,13 +77,17 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
             layoutManager.addTextContainer(textContainer)
             let range:NSRange = layoutManager.glyphRangeForTextContainer(textContainer)
         }
-        return textContainer
+        let textview = UITextView(frame: CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height-50), textContainer: textContainer)
+        let page = UIViewController()
+        page.view.frame = self.view.frame
+        page.view.addSubview(textview)
+        viewControllers.addObject(page)
+        return page
     }
 
     func setReadingNovelNameAndChapter(novelName:String, chapterNum:NSInteger){
         self.ReadingNovelName = novelName
-        currentPage = chapterNum
-        print("go aftertttttt      set---------\(self.ReadingNovelName)")
+        currentChapter = chapterNum
     }
 
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]){
@@ -130,6 +114,6 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
         return pageVC.viewControllers!.count
     }
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return currentPage
+        return currentChapter
     }
 }
