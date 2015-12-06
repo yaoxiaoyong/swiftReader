@@ -35,6 +35,7 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
     func handleNotification(sender:AnyObject){
         print("call to handle Notification here\(sender)");
         searchViewController.sharedInstance.reloadDataSource()
+        self.collectionview.reloadData()
     }
 
     func reloadDataSource(){
@@ -68,10 +69,8 @@ class BookShelfViewController: UIViewController,UICollectionViewDelegate, UIColl
     // MARK:UICollectionView Delegate
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath){
         let book:novel = dataArray[indexPath.row] as! novel
-        NSLog("====>\(book.novelName)")
-        chapterViewController.sharedInstance.setNovelName(book.novelName)
-        self.navigationController?.pushViewController(chapterViewController.sharedInstance, animated: true)
-
+        NSUserDefaults.standardUserDefaults().setValue(book.novelName, forKey: "selectedNovel")
+        self.navigationController?.pushViewController(chapterViewController(), animated: true)
     }
 
     // MARK:UICollectionViewFlowLayout Delegate

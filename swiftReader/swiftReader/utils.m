@@ -26,11 +26,16 @@
     return [str stringByAddingPercentEscapesUsingEncoding:CHINESE_CODING];
 }
 
++(NSURL*)ParseWithKey:(NSString*)keyValue
+{
+    NSString* requestURLwithParams = [NSString stringWithFormat:@"%@%@",QINGDISEARCHARTICLENAMEBASE, keyValue];
+    return [requestURLwithParams stringByAddingPercentEscapesUsingEncoding:CHINESE_CODING];
+}
+
 
 +(TFHpple*)THppleParseWithKey:(NSString*)keyValue
 {
     NSString *requestURLwithParams = [NSString stringWithFormat:@"%@%@",QINGDISEARCHARTICLENAMEBASE, keyValue];
-    //return [self THppleParseWithURL:[requestURLwithParams stringByAddingPercentEscapesUsingEncoding:CHINESE_CODING]];
     return [self THppleParseWithURL:requestURLwithParams];
 }
 

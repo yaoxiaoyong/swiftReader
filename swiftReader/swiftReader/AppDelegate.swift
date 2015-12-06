@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let vc = BookShelfViewController()
         vc.title = "书架"
@@ -21,21 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let searchVC = searchViewController.sharedInstance
         searchVC.title = "搜索"
 
-//        let dvc = EReaderViewController.sharedInstance
-//        dvc.title = "读书"
-
         let tab = UITabBarController()
         tab.addChildViewController(vc)
         tab.addChildViewController(searchVC)
-//        tab.addChildViewController(dvc)
 
         let nav = UINavigationController(rootViewController: tab)
 
-
         CoreLaunchFlip.animWithWindow(self.window, image: UIImage(named: "img4"))
         self.window?.rootViewController = nav
-
-
 
         return true
     }

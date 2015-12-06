@@ -6,21 +6,50 @@ PODS:
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
     - FMDB/common
+  - HanekeSwift (0.10.0)
   - hpple (0.2.0)
+  - JDStatusBarNotification (1.5.2)
+  - JTMaterialTransition (1.0.5)
+  - M13ProgressSuite (1.2.7)
   - MBProgressHUD (0.9.1)
+  - Realm (0.96.3):
+    - Realm/Headers (= 0.96.3)
+  - Realm/Headers (0.96.3)
+  - RealmSwift (0.96.3):
+    - Realm (= 0.96.3)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - TTTAttributedLabel (1.13.4)
 
 DEPENDENCIES:
   - Alamofire
   - AsyncSwift
   - FMDB
+  - HanekeSwift
   - hpple
+  - JDStatusBarNotification
+  - JTMaterialTransition
+  - M13ProgressSuite
   - MBProgressHUD
+  - Realm
+  - RealmSwift
+  - SDWebImage
+  - TTTAttributedLabel
 
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
   AsyncSwift: 3c90beed237324f1b57e1f1c414dc5501985d208
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
+  HanekeSwift: d6f5bdf9dbdbbc09d59623b2c1d533e46463dd4d
   hpple: 3b765f96fc2cd56ad1a49aef6f7be5cb2aa64b57
+  JDStatusBarNotification: a36d09ccbb047217572b074a61e7ca10dddc5f0a
+  JTMaterialTransition: 7b2a19927baa47e42312df941cbc5132dc4484ca
+  M13ProgressSuite: 03d194af6359da440641ba758aed5a18b0386a86
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Realm: 145d3cdf78a03aee71bde5381ad7e542bd541720
+  RealmSwift: aab84968aad662f61f36473d1aea019f63481505
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  TTTAttributedLabel: 0a2ac7b2dd726d32a070dafb01446026b11e624f
 
 COCOAPODS: 0.39.0

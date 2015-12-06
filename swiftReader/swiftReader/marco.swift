@@ -25,25 +25,13 @@ class marco: NSObject {
     }
 
 
-    func getHtmlString(urlstr:String){
-
-        Alamofire.request(.GET, "http://httpbin.org/get", parameters: ["foo": "bar"]).response {
-            (request, response, data, error) in
+    class func getHtmlString(key:String){
+        Alamofire.request(.GET, utils.ParseWithKey(key), parameters: nil).response {
+            (request, response, string, error) in
                 print(request)
                 print(response)
                 print(error)
+            print(string)
         }
-
-        Alamofire.download(.GET, "http://httpbin.org/stream/100", destination: { (temporaryURL, response) in
-            if let directoryURL = NSFileManager.defaultManager()
-                .URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as? NSURL {
-                    print(response)
-//                    let pathComponent = response.suggestedFilename
-//
-//                    return directoryURL.URLByAppendingPathComponent(pathComponent!)
-                }
-
-            return temporaryURL
-        })
     }
 }

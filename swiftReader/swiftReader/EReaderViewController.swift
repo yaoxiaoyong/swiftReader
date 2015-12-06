@@ -17,17 +17,22 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
     var textString : String = NSString() as String
     var layoutManager = NSLayoutManager()
 
-    class var sharedInstance : EReaderViewController {
-        struct Static {
-            static let instance : EReaderViewController = EReaderViewController()
-        }
-        return Static.instance
-    }
+//    class var sharedInstance : EReaderViewController {
+//        struct Static {
+//            static let instance : EReaderViewController = EReaderViewController()
+//        }
+//        return Static.instance
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.grayColor()
         self.tabBarController?.hidesBottomBarWhenPushed = true
+
+        //self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+        self.ReadingNovelName = NSUserDefaults.standardUserDefaults().valueForKey("selectedNovel") as! String
+        currentPage = NSUserDefaults.standardUserDefaults().valueForKey("currentChapter") as! NSInteger
 
         self.pageVC = UIPageViewController(transitionStyle: .PageCurl, navigationOrientation:.Horizontal, options: [UIPageViewControllerOptionSpineLocationKey:NSNumber(float: 10)])
         self.pageVC.delegate = self;//设置delegate,提供展示相关的信息和接收手势发起的转换的通知
@@ -44,7 +49,7 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
         let textContainer = NSTextContainer(size: CGSizeMake(self.view.frame.size.width, self.view.frame.size.height-65))
         layoutManager.addTextContainer(textContainer)
 
-        let page = self.generateNewPage(textContainer)
+        self.generateNewPage(textContainer)
 
         pageVC.setViewControllers([viewControllers.objectAtIndex(0) as! UIViewController], direction: .Forward, animated: true, completion:nil)
 
@@ -71,6 +76,7 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
         let range:NSRange = layoutManager.glyphRangeForTextContainer(textContainer)
         if(range.length+range.location >= textString.characters.count ){
             let oneChapter = dataArray[currentPage++]
+            NSUserDefaults.standardUserDefaults().setValue(currentPage, forKey: "currentChapter")
             textString = oneChapter.chapterContent
             let storage = NSTextStorage(string: textString)
             layoutManager = NSLayoutManager()
@@ -83,20 +89,16 @@ class EReaderViewController: UIViewController ,UIPageViewControllerDataSource, U
         return textContainer
     }
 
-    
-
     func generateNewPage(textContainer:NSTextContainer)->UIViewController{
         let page = UIViewController()
-        page.view.frame = self.view.frame
-        let textview = UITextView(frame: CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height-60), textContainer: textContainer)
+        page.view.frame     = self.view.frame
+        let textview        = UITextView(frame: CGRectMake(0, 30, self.view.frame.size.width, self.view.frame.size.height-60), textContainer: textContainer)
+        textview.editable   = false
+        textview.selectable = false
+        textview.font = UIFont(name: "AppleGothic", size: 20.0)
         page.view.addSubview(textview)
         viewControllers.addObject(page)
         return page
-    }
-
-    func setReadingNovelNameAndChapter(novelName:String, chapterNum:NSInteger){
-        self.ReadingNovelName = novelName
-        currentPage = chapterNum
     }
 
     func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]){

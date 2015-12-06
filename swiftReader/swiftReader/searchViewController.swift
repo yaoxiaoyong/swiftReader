@@ -32,7 +32,7 @@ class searchViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         self.tfSearch?.frame  = CGRectMake(0, 30, self.view.frame.size.width, 30)
         self.tfSearch?.placeholder = "请输入搜索关键字"
-        self.tfSearch?.text = "道"
+        self.tfSearch?.text = "魔"
         self.tfSearch?.delegate = self
         self.tfSearch?.keyboardType = UIKeyboardType.WebSearch
         self.tfSearch?.backgroundColor = UIColor.lightGrayColor()

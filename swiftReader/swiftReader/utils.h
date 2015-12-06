@@ -28,7 +28,7 @@
 +(NSString*)parseGBKStr:(NSString*)str;
 
 +(TFHpple*)THppleParseWithKey:(NSString*)keyValue;
-
++(NSString*)ParseWithKey:(NSString*)keyValue;
 
 +(TFHpple*)THppleParseWithURL:(NSString*)url;
 

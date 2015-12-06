@@ -17,12 +17,12 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
     public var tableView : UITableView? = UITableView();
 
 
-    class var sharedInstance : chapterViewController {
-        struct Static {
-            static let instance : chapterViewController = chapterViewController()
-        }
-        return Static.instance
-    }
+//    class var sharedInstance : chapterViewController {
+//        struct Static {
+//            static let instance : chapterViewController = chapterViewController()
+//        }
+//        return Static.instance
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,12 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView!.delegate = self
         //
         self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
+        selectedNovelName = NSUserDefaults.standardUserDefaults().valueForKey("selectedNovel") as! String
+
+        //let currentChapterNum = NSUserDefaults.standardUserDefaults().valueForKey("currentChapter") as! NSInteger
+        //self.tableView?.scrollToRowAtIndexPath ( NSIndexPath ( forRow : currentChapterNum - 1 , inSection : 0 ) , atScrollPosition : .Middle, animated : true )
+
         self.view.addSubview(self.tableView!)
     }
 
@@ -67,8 +73,9 @@ class chapterViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         NSLog("click af section:\(indexPath.section)  row:\(indexPath.row)")
-        let obj = dataArray[indexPath.row] as! chapter
-        EReaderViewController.sharedInstance.setReadingNovelNameAndChapter(obj.novelName, chapterNum: indexPath.row)
-        self.navigationController?.pushViewController(EReaderViewController.sharedInstance, animated: true)
+        //let obj = dataArray[indexPath.row] as! chapter
+        //EReaderViewController.sharedInstance.setReadingNovelNameAndChapter(obj.novelName, chapterNum: indexPath.row)
+        NSUserDefaults.standardUserDefaults().setValue(indexPath.row, forKey: "currentChapter")
+        self.navigationController?.pushViewController(EReaderViewController(), animated: true)
     }
 }
